@@ -1,24 +1,50 @@
 part of 'pages.dart';
 
-class SignInPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
   @override
-  _SignInPageState createState() => _SignInPageState();
+  _SignUpPageState createState() => _SignUpPageState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    TextEditingController nameController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
     bool isLoading = false;
 
     return GeneralPage(
-      title: "Masuk",
-      subtitle: "Temukan event favorite-mu!",
+      title: "Daftar",
+      subtitle: "Registrasi Sekarang",
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(defaultMargin, 20, defaultMargin, 6),
+            margin: EdgeInsets.fromLTRB(defaultMargin, 10, defaultMargin, 6),
+            width: double.infinity,
+            child: Text(
+              'Nama Lengkap',
+              style: blackFontStyle4,
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: greyColor),
+            ),
+            child: TextField(
+              controller: nameController,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: "Masukan nama lengkap"),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.fromLTRB(defaultMargin, 10, defaultMargin, 6),
             width: double.infinity,
             child: Text(
               'Email',
@@ -66,22 +92,27 @@ class _SignInPageState extends State<SignInPage> {
             ),
           ),
           Container(
+            margin: EdgeInsets.fromLTRB(defaultMargin, 16, defaultMargin, 6),
+            width: double.infinity,
+            child: Text(
+              'Konfirmasi Kata Sandi',
+              style: blackFontStyle4,
+            ),
+          ),
+          Container(
             width: double.infinity,
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
-            child: GestureDetector(
-              onTap: () {
-                print('tapped');
-              },
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  'Lupa kata sandi?',
-                  style: TextStyle(
-                    color: mainColor,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: greyColor),
+            ),
+            child: TextField(
+              controller: passwordController,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintStyle: greyFontStyle,
+                  hintText: "Masukan ulang kata sandi"),
             ),
           ),
           Container(
@@ -104,7 +135,7 @@ class _SignInPageState extends State<SignInPage> {
                     ),
                     color: mainColor,
                     child: Text(
-                      'Masuk',
+                      'Daftar',
                       style: whiteStyle2,
                     ),
                   ),
@@ -174,15 +205,15 @@ class _SignInPageState extends State<SignInPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Belum memiliki akun? ',
+                  'Sudah memiliki akun? ',
                   style: blackFontStyle4,
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(() => SignUpPage());
+                    Get.to(() => SignInPage());
                   },
                   child: Text(
-                    'Daftar',
+                    'Masuk sekarang',
                     style: TextStyle(
                       fontSize: 14,
                       color: mainColor,

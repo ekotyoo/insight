@@ -32,7 +32,7 @@ class GeneralPage extends StatelessWidget {
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 100,
+                      height: 80,
                       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                       color: Colors.white,
                       child: Row(
@@ -58,7 +58,7 @@ class GeneralPage extends StatelessWidget {
                                 subtitle,
                                 style: GoogleFonts.poppins(
                                   color: greyColor,
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   fontWeight: FontWeight.w300,
                                 ),
                               ),
