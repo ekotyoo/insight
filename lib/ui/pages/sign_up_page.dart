@@ -11,12 +11,15 @@ class _SignUpPageState extends State<SignUpPage> {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController nameController = TextEditingController();
-    TextEditingController phoneController = TextEditingController();
+
     bool isLoading = false;
 
     return GeneralPage(
       title: "Daftar",
       subtitle: "Registrasi Sekarang",
+      onBackButtonPressed: () {
+        Get.back();
+      },
       child: Column(
         children: [
           Container(
@@ -125,17 +128,19 @@ class _SignUpPageState extends State<SignUpPage> {
                     color: mainColor,
                     size: 40,
                   )
-                : RaisedButton(
+                : ElevatedButton(
                     onPressed: () {
                       print('tapped');
                     },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      primary: mainColor,
                     ),
-                    color: mainColor,
                     child: Text(
-                      'Daftar',
+                      'Daftar sekarang',
                       style: whiteStyle2,
                     ),
                   ),
@@ -146,7 +151,7 @@ class _SignUpPageState extends State<SignUpPage> {
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: Center(
                 child: Text(
-              'Atau masuk dengan',
+              'Atau daftar dengan:',
               style: blackFontStyle4,
             )),
           ),

@@ -6,12 +6,11 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    bool isLoading = false;
-
     return GeneralPage(
       title: "Masuk",
       subtitle: "Temukan event favorite-mu!",
@@ -90,19 +89,53 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.only(top: defaultMargin),
             padding: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: isLoading
-                ? SpinKitFadingCircle(
-                    color: mainColor,
-                    size: 40,
-                  )
-                : RaisedButton(
-                    onPressed: () {
-                      print('tapped');
+                ? loadingIndicator
+                : ElevatedButton(
+                    onPressed: () async {
+                      setState(() {
+                        isLoading = true;
+                      });
+
+                      await context.read<UserCubit>().signIn(
+                          emailController.text, passwordController.text);
+
+                      UserState state = context.read<UserCubit>().state;
+
+                      if (state is UserLoaded) {
+                        context.read<EventCubit>().getEvents();
+                        context.read<TransactionCubit>().getTransactions();
+                        Get.to(MainPage());
+                      } else {
+                        setState(() {
+                          Get.snackbar(
+                            '',
+                            '',
+                            backgroundColor: mainColor,
+                            icon: Icon(
+                              Icons.dangerous,
+                              color: Colors.white,
+                              size: 35,
+                            ),
+                            titleText: Text(
+                              'Login Gagal',
+                              style: whiteStyle1,
+                            ),
+                            messageText: Text(
+                              (state as UserLoadingFailed).message,
+                              style: whiteStyle2,
+                            ),
+                          );
+                          isLoading = false;
+                        });
+                      }
                     },
-                    elevation: 0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      primary: mainColor,
                     ),
-                    color: mainColor,
                     child: Text(
                       'Masuk',
                       style: whiteStyle2,
@@ -115,7 +148,7 @@ class _SignInPageState extends State<SignInPage> {
             margin: EdgeInsets.symmetric(horizontal: defaultMargin),
             child: Center(
                 child: Text(
-              'Atau masuk dengan',
+              'Atau masuk dengan:',
               style: blackFontStyle4,
             )),
           ),
