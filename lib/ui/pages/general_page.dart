@@ -43,10 +43,12 @@ class GeneralPage extends StatelessWidget {
                                     onBackButtonPressed();
                                   },
                                   child: Container(
-                                    margin: EdgeInsets.only(right: 20),
+                                    height: 50,
+                                    width: 50,
+                                    margin: EdgeInsets.only(right: 5),
                                     child: Icon(
                                       Icons.arrow_back_ios_rounded,
-                                      size: 20,
+                                      size: 30,
                                     ),
                                   ),
                                 )

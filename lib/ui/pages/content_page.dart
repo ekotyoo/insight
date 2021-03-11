@@ -82,12 +82,17 @@ class _ContentPageState extends State<ContentPage> {
                           color: Colors.black,
                           fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      'Lihat Semua >',
-                      style: GoogleFonts.poppins().copyWith(
-                          fontSize: 12,
-                          color: mainColor,
-                          fontWeight: FontWeight.w500),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => AllEventPage(0));
+                      },
+                      child: Text(
+                        'Lihat Semua >',
+                        style: GoogleFonts.poppins().copyWith(
+                            fontSize: 12,
+                            color: mainColor,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ],
                 ),
@@ -157,12 +162,17 @@ class _ContentPageState extends State<ContentPage> {
                           color: Colors.black,
                           fontWeight: FontWeight.w600),
                     ),
-                    Text(
-                      'Lihat Semua >',
-                      style: GoogleFonts.poppins().copyWith(
-                          fontSize: 12,
-                          color: mainColor,
-                          fontWeight: FontWeight.w500),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => AllEventPage(1));
+                      },
+                      child: Text(
+                        'Lihat Semua >',
+                        style: GoogleFonts.poppins().copyWith(
+                            fontSize: 12,
+                            color: mainColor,
+                            fontWeight: FontWeight.w500),
+                      ),
                     ),
                   ],
                 ),

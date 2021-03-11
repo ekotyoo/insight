@@ -25,3 +25,4 @@ part 'content_page.dart';
 part 'search_page.dart';
 part 'event_details_page.dart';
 part 'profile_page.dart';
+part 'all_event_page.dart';
