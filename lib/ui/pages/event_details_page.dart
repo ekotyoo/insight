@@ -88,7 +88,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                                     Icon(FontAwesome.calendar,
                                         color: greyColor, size: 14),
                                     Text(
-                                      widget.transaction.event.date,
+                                      DateFormat.yMMMd().format(
+                                          widget.transaction.event.date),
                                       style: greyFontStyle,
                                     ),
                                   ],

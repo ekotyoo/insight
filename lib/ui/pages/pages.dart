@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:insight/ui/widgets/widgets.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 part 'general_page.dart';
 part 'sign_in_page.dart';

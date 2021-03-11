@@ -60,7 +60,7 @@ class EventCard extends StatelessWidget {
                                 size: 11,
                               ),
                               Text(
-                                event.date,
+                                DateFormat.yMMMd().format(event.date),
                                 style: greyFontStyle.copyWith(fontSize: 11),
                               ),
                             ],
