@@ -13,6 +13,7 @@ import 'package:insight/ui/widgets/widgets.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 part 'general_page.dart';
 part 'sign_in_page.dart';
@@ -26,3 +27,4 @@ part 'search_page.dart';
 part 'event_details_page.dart';
 part 'profile_page.dart';
 part 'all_event_page.dart';
+part 'planner_page.dart';
