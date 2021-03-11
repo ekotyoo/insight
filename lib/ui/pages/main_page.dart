@@ -32,9 +32,7 @@ class _MainPageState extends State<MainPage> {
               children: [
                 ContentPage(),
                 PlannerPage(),
-                Center(
-                  child: Text('Notification Page'),
-                ),
+                NotificationPage(),
                 ProfilePage(),
               ],
             ),

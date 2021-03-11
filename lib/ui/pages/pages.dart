@@ -28,3 +28,4 @@ part 'event_details_page.dart';
 part 'profile_page.dart';
 part 'all_event_page.dart';
 part 'planner_page.dart';
+part 'notification_page.dart';
