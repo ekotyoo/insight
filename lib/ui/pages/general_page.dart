@@ -9,13 +9,14 @@ class GeneralPage extends StatelessWidget {
 
   GeneralPage(
       {this.title = "Title",
-      this.subtitle = "subtitle",
+      this.subtitle,
       this.onBackButtonPressed,
       this.child,
       this.backColor});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           Container(
@@ -32,7 +33,7 @@ class GeneralPage extends StatelessWidget {
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 80,
+                      height: 110,
                       padding: EdgeInsets.symmetric(horizontal: defaultMargin),
                       color: Colors.white,
                       child: Row(
@@ -59,19 +60,18 @@ class GeneralPage extends StatelessWidget {
                             children: [
                               Text(
                                 title,
-                                style: GoogleFonts.poppins(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: blackFontStyle1,
                               ),
-                              Text(
-                                subtitle,
-                                style: GoogleFonts.poppins(
-                                  color: greyColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
+                              (subtitle != null)
+                                  ? Text(
+                                      subtitle,
+                                      style: GoogleFonts.poppins(
+                                        color: greyColor,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    )
+                                  : SizedBox.shrink(),
                             ],
                           ),
                         ],

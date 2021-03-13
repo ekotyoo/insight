@@ -35,17 +35,34 @@ class _PlannerPageState extends State<PlannerPage> {
           subtitle: "Mari produktif!",
           child: Column(
             children: [
-              TableCalendar(
-                calendarStyle: CalendarStyle(
-                  selectedColor: mainColor,
+              Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
                 ),
-                calendarController: _calendarController,
-                onDaySelected: (date, events, holidays) {
-                  setState(() {});
-                },
-                events: _groupedEvents,
+                margin: EdgeInsets.fromLTRB(
+                    defaultMargin, 10, defaultMargin, defaultMargin),
+                elevation: 5,
+                shadowColor: Colors.black45,
+                child: TableCalendar(
+                  calendarStyle: CalendarStyle(
+                    selectedColor: mainColor,
+                  ),
+                  calendarController: _calendarController,
+                  onDaySelected: (date, events, holidays) {
+                    setState(() {});
+                  },
+                  events: _groupedEvents,
+                ),
               ),
-              Divider(),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: defaultMargin),
+                height: 20,
+                width: double.infinity,
+                child: Text(
+                  'Webinar bulan ini:',
+                  style: blackFontStyle1.copyWith(fontSize: 16),
+                ),
+              ),
               ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -53,20 +70,42 @@ class _PlannerPageState extends State<PlannerPage> {
                   itemBuilder: (BuildContext context, int index) {
                     Event event = _selectedEvents[index];
                     return ListTile(
-                      leading: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                          image: AssetImage(event.pictureURL),
-                          fit: BoxFit.cover,
-                        )),
+                      onTap: () {
+                        Get.to(EventDetailsPage(
+                          transaction: Transaction(
+                            event: event,
+                            user:
+                                (context.read<UserCubit>().state as UserLoaded)
+                                    .user,
+                          ),
+                          onBackButtonPressed: () {
+                            Get.back();
+                          },
+                        ));
+                      },
+                      leading: Icon(
+                        Icons.circle,
+                        color: mainColor,
                       ),
-                      subtitle: Text(DateFormat("EEEE, dd MMMMM, yyyy")
-                          .format(event.date)),
-                      title: Text(event.name, style: blackFontStyle2),
+                      subtitle: Text(
+                          DateFormat("EEEE, dd MMMM, yyyy").format(event.date)),
+                      title: Text(
+                        event.name,
+                        style: blackFontStyle3,
+                      ),
                       horizontalTitleGap: 10,
-                      trailing: Icon(Icons.arrow_forward_ios_rounded),
+                      trailing: Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                          color: mainColor,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          '10.00 - 12.00 WIB',
+                          style:
+                              whiteStyle3.copyWith(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     );
                   })
             ],

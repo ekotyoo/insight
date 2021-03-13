@@ -33,11 +33,7 @@ class _ContentPageState extends State<ContentPage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Insight!',
-                              style: GoogleFonts.poppins(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w500,
-                              )),
+                          Text('Insight!', style: blackFontStyle1),
                           Text(
                             'Tingkatkan produktivitasmu!',
                             style: GoogleFonts.poppins(
@@ -48,19 +44,27 @@ class _ContentPageState extends State<ContentPage> {
                           )
                         ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Get.to(SearchPage());
-                        },
-                        child: Container(
-                          child: Center(
-                            child: Icon(
-                              FontAwesome.search,
-                              color: greyColor,
+                      Row(
+                        children: [
+                          IconButton(
+                              icon: Icon(
+                                FontAwesome.search,
+                                color: blackColor,
+                              ),
+                              onPressed: () {
+                                // showSearch(
+                                //     context: context,
+                                //     delegate: EventSearchDelegate());
+                              }),
+                          IconButton(
+                            icon: Icon(
+                              FontAwesome.ticket,
+                              color: blackColor,
                             ),
+                            onPressed: () {},
                           ),
-                        ),
-                      )
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -79,7 +83,7 @@ class _ContentPageState extends State<ContentPage> {
                       'Webinar kesukaanmu, nih!',
                       style: GoogleFonts.poppins().copyWith(
                           fontSize: 14,
-                          color: Colors.black,
+                          color: blackColor,
                           fontWeight: FontWeight.w600),
                     ),
                     GestureDetector(
@@ -159,7 +163,7 @@ class _ContentPageState extends State<ContentPage> {
                       'Webinar Populer',
                       style: GoogleFonts.poppins().copyWith(
                           fontSize: 14,
-                          color: Colors.black,
+                          color: blackColor,
                           fontWeight: FontWeight.w600),
                     ),
                     GestureDetector(

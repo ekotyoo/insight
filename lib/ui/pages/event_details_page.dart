@@ -206,7 +206,9 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
               margin: EdgeInsets.fromLTRB(
                   defaultMargin, 0, defaultMargin, defaultMargin),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(PaymentPage(transaction: widget.transaction));
+                },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
