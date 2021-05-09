@@ -1,6 +1,6 @@
 # insight
 
-Project internship BCC 2021
+Project internship BCC 2021. Dibangun dengan menggunakan framework Flutter.
 
 ## Getting Started
 
