@@ -1,6 +1,6 @@
 # insight
 
-A new Flutter project.
+Project internship BCC 2021
 
 ## Getting Started
 
